@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/home/miruna/.config/herd-lite/bin/php",
+            "args": [
+                "/home/miruna/Documents/INFOLOGICA/Laravel/idea/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

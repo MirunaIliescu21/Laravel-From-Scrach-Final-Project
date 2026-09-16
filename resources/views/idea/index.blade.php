@@ -4,6 +4,26 @@
             <h1 class="text-3xl font-bold">Ideas</h1>
             <p class="text-muted-foreground text-sm mt-2">Capture your thoughts. Make a plan.</p>
         </header>
+
+        <div>
+            <a href="/ideas" class="btn {{ request()->has('status') ? 'btn-outlined' : '' }}">
+                All <span class="text-xs pl-2">{{ $statusCounts->get('all') }}</span>
+            </a>
+        
+            @foreach (App\IdeaStatus::cases() as $status)
+                <a 
+                    href="/ideas?status={{ $status->value }}"
+                    class="btn {{ request('status') === $status->value ? '' : 'btn-outlined' }}"
+                >
+                    {{ $status->label() }} 
+
+                    {{-- select status, count(*) from ideas group by status; --}}
+                    <span class="text-xs pl-2">
+                        {{ $statusCounts->get($status->value) }}
+                    </span>
+                </a>
+            @endforeach
+        </div>
     
         <div class="mt-10 text-muted-foreground">
             <div class="grid md:grid-cols-2 gap-6">

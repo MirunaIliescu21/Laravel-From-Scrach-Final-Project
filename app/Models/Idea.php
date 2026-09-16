@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Step;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 
 /**
  * Step 1: Create the model
@@ -106,5 +107,20 @@ class Idea extends Model
     public function steps(): HasMany
     {
         return $this->hasMany(Step::class); // we dont have a Step Model -> create one!
+    }
+
+    public static function statusCounts(User $user) : Collection
+    {
+      // select status, count(*) from ideas group by status;
+      $counts = $user->ideas()
+        ->selectRaw('status, count(*) as count')
+        ->groupBy('status')
+        ->pluck('count', 'status');
+
+      return collect(IdeaStatus::cases())
+        ->mapWithKeys(fn($status) => [
+            $status->value => $counts->get($status->value, 0),
+        ])
+        ->put('all', $user->ideas()->count());
     }
 }

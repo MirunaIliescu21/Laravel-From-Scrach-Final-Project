@@ -2,7 +2,6 @@
 
 use App\Models\Idea;
 use App\Models\User;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Insert / create an idea into the DB.
@@ -17,9 +16,9 @@ test('it belongs to a user', function () {
  * We create an idea.
  * But withour creating also some steps.
  * Returns a null collection of steps.
- * 
- * Then add a step, refresh the idea 
- * and it will have exactly 1 item. 
+ *
+ * Then add a step, refresh the idea
+ * and it will have exactly 1 item.
  */
 test('it can have steps', function () {
     $idea = Idea::factory()->create();

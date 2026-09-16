@@ -16,7 +16,6 @@ it('register a user', function () {
     ]);
 });
 
-
 it('requires a valid email address', function () {
     visit('/register')
         ->fill('name', 'John Doe')

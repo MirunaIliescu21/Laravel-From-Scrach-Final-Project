@@ -1,13 +1,13 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
 
 /**
  * Step 2:
- * 
+ *
  * What does an idea consist off ?
  * - id
  * - foreign id for our User model (user_id)
@@ -17,13 +17,13 @@ use App\Models\User;
  * - image path
  * - each idea has a list of steps (links = empty array by default)
  * - timestamp
- * 
+ *
  * Step 3:
  * Migrate the database:
- * 
+ *
  * miruna@pink:~/Documents/INFOLOGICA/Laravel/idea$ php artisan migrate
 
-   INFO  Running migrations.  
+   INFO  Running migrations.
   2026_08_31_103445_create_ideas_table .................................................. 8.06ms DONE
  */
 

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Step;
 use App\Models\Idea;
+use App\Models\Step;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -13,7 +13,7 @@ class StepFactory extends Factory
 {
     /**
      * Step 15: dummy data
-     * 
+     *
      * Define the model's default state.
      *
      * @return array<string, mixed>

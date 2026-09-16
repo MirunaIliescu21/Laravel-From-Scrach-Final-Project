@@ -12,10 +12,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class IdeaFactory extends Factory
 {
     /**
-     * Step 13 : dummy date 
-     * 
+     * Step 13 : dummy date
+     *
      * 'status' is set on the Model no matter what, for fake date or even more for real data.
-     * 
+     *
      * Define the model's default state.
      *
      * @return array<string, mixed>

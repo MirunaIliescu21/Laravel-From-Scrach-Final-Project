@@ -5,7 +5,6 @@ declare(strict_types=1);
 use App\Http\Controllers\IdeaController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionsController;
-
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', fn () => view('welcome'));
@@ -22,4 +21,3 @@ Route::get('/login', [SessionsController::class, 'create'])->name('login')->midd
 Route::post('/login', [SessionsController::class, 'store'])->middleware('guest');
 
 Route::post('/logout', [SessionsController::class, 'destroy'])->middleware('auth');
-

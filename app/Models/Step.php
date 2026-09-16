@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
+use Database\Factories\StepFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Idea;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
@@ -19,19 +21,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  │ Factory                                                      │
  │ Migration                                                    │
  └──────────────────────────────────────────────────────────────┘
-   INFO  Model [app/Models/Step.php] created successfully.  
-   INFO  Factory [database/factories/StepFactory.php] created successfully.  
-   INFO  Migration [database/migrations/2026_08_31_111133_create_steps_table.php] created successfully.  
-   * we are accessing this migration for step 9
- *
+   INFO  Model [app/Models/Step.php] created successfully.
+   INFO  Factory [database/factories/StepFactory.php] created successfully.
+   INFO  Migration [database/migrations/2026_08_31_111133_create_steps_table.php] created successfully.
+ * we are accessing this migration for step 9
  */
 class Step extends Model
 {
-    /** @use HasFactory<\Database\Factories\StepFactory> */
+    /** @use HasFactory<StepFactory> */
     use HasFactory;
 
     protected $attributes = [
-      'completed' => false,
+        'completed' => false,
     ];
 
     /** Step 11:

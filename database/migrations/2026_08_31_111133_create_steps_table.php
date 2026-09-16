@@ -7,21 +7,21 @@ use Illuminate\Support\Facades\Schema;
 
 /**
  * Step 9:
- * 
+ *
  * Wht does a step consists off ?
- * 
+ *
  * - id
  * - foreing id for the idea
  * - description
  * - boolean for completed
  * - timestamp
- * 
+ *
  * Step 10:
- * 
+ *
  * Migrate the database:
- * 
+ *
  * (base) miruna@pink:~/Documents/INFOLOGICA/Laravel/idea$ php artisan migrate
-   INFO  Running migrations.  
+   INFO  Running migrations.
    2026_08_31_111133_create_steps_table ................................................................................................. 3.85ms DONE
  */
 

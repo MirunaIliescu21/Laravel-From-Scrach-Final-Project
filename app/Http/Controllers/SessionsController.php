@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,8 +23,8 @@ class SessionsController extends Controller
 
         if (! Auth::attempt($attributes)) {
             return redirect()->back()
-                        ->withErrors(['password' => 'We were unable to authenticate using the provided credentials.'])
-                        ->withInput();
+                ->withErrors(['password' => 'We were unable to authenticate using the provided credentials.'])
+                ->withInput();
         }
 
         $request->session()->regenerate();

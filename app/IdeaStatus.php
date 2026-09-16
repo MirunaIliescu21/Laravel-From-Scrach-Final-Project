@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 /**
  * Step 6:
  * Populate the enum with the values:
- * 
+ *
  * PENDING = 'pending';
  * IN_PROGRESS = 'in progress';
  * COMPLETED = 'completed';
@@ -22,10 +24,15 @@ enum IdeaStatus: string
      */
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::PENDING => 'Pending',
             self::IN_PROGRESS => 'In Progress',
             self::COMPLETED => 'Completed',
         };
+    }
+
+    public static function values(): array
+    {
+        return array_map(fn (IdeaStatus $status) => $status->value, self::cases());
     }
 }

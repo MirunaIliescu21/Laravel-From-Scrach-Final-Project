@@ -13,6 +13,8 @@ Route::redirect('/', '/ideas');  // we dont have for now a home page so we redir
 
 Route::get('/ideas', [IdeaController::class, 'index'])->name('ideas.index')->middleware('auth'); // the action is index bc here is where I display all the ideas
 Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('ideas.show')->middleware('auth');
+Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy')->middleware('auth');
+
 
 Route::get('/register', [RegisteredUserController::class, 'create'])->middleware('guest');
 Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');

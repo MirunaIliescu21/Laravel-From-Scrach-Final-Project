@@ -59,9 +59,11 @@ class IdeaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Idea $idea): void
+    public function show(Idea $idea)
     {
-        //
+        return view('idea.show', [
+            'idea' => $idea,
+        ]);
     }
 
     /**
@@ -83,8 +85,15 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Idea $idea): void
+    public function destroy(Idea $idea)
     {
-        //
+        // authorize that this is allowed
+        $idea->delete();
+
+        // They do the same thing, redirect to the route /ideas
+        return to_route('ideas.index'); // cauta in registru de rute populate in routes/web.php prin intermediul ->name() 
+                                        // si gaseste 'ideas.index' care duce la /ideas si genereaza efectiv un HTTP direct catre acest url.
+        // return redirect('/ideas');
+        // return redirect()->route('ideas.index');
     }
 }

@@ -39,7 +39,7 @@
         <div class="mt-10 text-muted-foreground">
             <div class="grid md:grid-cols-2 gap-6">
                 @forelse($ideas as $idea)
-                    <x-card href="{{ route('ideas.show', $idea) }}">
+                    <x-card href="{{ route('idea.show', $idea) }}">
                         <h3 class="text-foreground text-lg font-bold">{{ $idea->title }}</h3>
 
                         <div>
@@ -62,7 +62,62 @@
 
         <!-- modal -->
         <x-modal name="create-idea" title="New idea">
-            <p>Slot content here.</p>
+            {{-- x-data is an Apline component that needs to be declare --}}
+            <form x-data="{status: 'pending'}" method="POST" action="{{ route('idea.store') }}">
+                @csrf
+                <div class="space-y-6">
+                    <x-form.field
+                        label="Title"
+                        name="title"
+                        placeholder="Enter an idea for your title"
+                        autofocus
+                        required
+                    />
+
+                    <div class="space-y-2">
+                        <label for="status" class="label">Status</label>
+
+                        <div class="flex gap-x-3">
+                            @foreach(App\IdeaStatus::cases() as $status)
+                                <button 
+                                    type="button"
+                                    @click="status = @js($status->value)"
+                                    class="btn flex-1 h-10"
+                                    {{-- Apply btn-outlined if the status si diff than the curr status --}}
+                                    :class="{'btn-outlined': status !== @js($status->value)}""
+                                >
+                                    {{ $status->label() }}
+                                </button>
+                            @endforeach
+
+                            {{-- An elegant way to let the user select their status --}}
+                            <input type="hidden" name="status" :value="status" class="input">
+                        </div>
+
+                        <x-form.error name="status" />
+
+                    </div>
+
+                    <x-form.field
+                        label="Description"
+                        name="description"
+                        type="textarea"
+                        placeholder="Describe your idea..."
+                    />
+
+                    <div class="flex justify-end gap-x-5">
+                        {{-- What should happen when a user cancels ? reset the form, hide the modal --}}
+                        <button 
+                            type="button"
+                            @click="$dispatch('close-modal')"
+                        >
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn">Create</button>
+                    </div>
+
+                </div>
+            </form>
         </x-modal>
     </div>
 </x-layout>

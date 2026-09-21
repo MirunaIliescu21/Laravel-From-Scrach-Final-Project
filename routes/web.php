@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', '/ideas');  // we dont have for now a home page so we redirect to the ideas page
 
 Route::get('/ideas', [IdeaController::class, 'index'])->name('ideas.index')->middleware('auth'); // the action is index bc here is where I display all the ideas
-Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('ideas.show')->middleware('auth');
+Route::post('/ideas', [IdeaController::class, 'store'])->name('idea.store')->middleware('auth');
+Route::get('/ideas/{idea}', [IdeaController::class, 'show'])->name('idea.show')->middleware('auth');
 Route::delete('/ideas/{idea}', [IdeaController::class, 'destroy'])->name('ideas.destroy')->middleware('auth');
 
 

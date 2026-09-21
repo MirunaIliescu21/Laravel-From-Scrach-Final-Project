@@ -9,9 +9,10 @@
                 @click="$dispatch('open-modal','create-idea')"
                 is="button"
                 type="button"
+                data-test="create-idea-button"
                 class="mt-10 cursor-pointer h-32 w-full text-left"
                 >
-                <p>What's the idea?</p>
+                What's the idea?
             </x-card>
 
         </header>
@@ -82,6 +83,7 @@
                                 <button 
                                     type="button"
                                     @click="status = @js($status->value)"
+                                    data-test="button-status-{{ $status->value }}"
                                     class="btn flex-1 h-10"
                                     {{-- Apply btn-outlined if the status si diff than the curr status --}}
                                     :class="{'btn-outlined': status !== @js($status->value)}""
@@ -109,10 +111,7 @@
                         {{-- What should happen when a user cancels ? reset the form, hide the modal --}}
                         <button 
                             type="button"
-                            @click="$dispatch('close-modal')"
-                        >
-                            Cancel
-                        </button>
+                            @click="$dispatch('close-modal')">Cancel</button>
                         <button type="submit" class="btn">Create</button>
                     </div>
 
